@@ -1,6 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useState } from "react";
 import DetailsGroup from "./DetailsGroup";
+import Description from "./Description";
 
 export function PersonalDetails(props) {
     const [name, setName] = useState("")
@@ -8,6 +9,7 @@ export function PersonalDetails(props) {
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
     const [location, setLocation] = useState('')
+    const [description, setDescription] = useState('')
     return (
         <div className="main-container">
             <div className="personal-details-container">
@@ -18,16 +20,19 @@ export function PersonalDetails(props) {
                     <input type="text" placeholder="Phone" onChange={(e) => setPhone(e.target.value)} />
                     <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
                     <input type="text" placeholder="Location" onChange={(e) => setLocation(e.target.value)} />
-                    <input type="text" placeholder="Description" />
+                    <textarea type="text" placeholder="Description" className="text-area" onChange={(e) => setDescription(e.target.value)} />
                 </div>
             </div>
 
             <div className="cv-container">
                 <header>
-                    <PersonalDetailsOut name={name} />
+                    <PersonalDetailsOut name={name} title={title} />
                     <DetailsGroup phone={phone} email={email} location={location} />
 
                 </header>
+                <main>
+                    <Description description={description} />
+                </main>
             </div>
         </div>
     );
@@ -37,8 +42,8 @@ export function PersonalDetails(props) {
 export function PersonalDetailsOut({ name, title }) {
     return (
         <div className="header-left">
-            <h1>{name}</h1>
-            <h3>{title}</h3>
+            <h1>{name || ""}</h1>
+            <h3>{title || ""}</h3>
         </div>
     )
 }
