@@ -1,7 +1,7 @@
 .main-container {
     display: flex;
     width: 100vw;
-    height: 90vh;
+    height: 100%;
     justify-content: center;
     gap: 1rem;
 }
@@ -12,6 +12,10 @@
     padding: 1rem;
     border: 2px solid black;
 
+}
+
+.cv-container {
+    height: 90vh;
 }
 
 .input-container {
@@ -74,4 +78,38 @@ header {
 
 .cv-description {
     line-height: 20px;
+}
+
+.buttons-container button {
+    width: 10%;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.input-work-experience,
+.input-education-experience {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.experience-details {
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
+}
+
+.work-exp-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.work-experience-top {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
