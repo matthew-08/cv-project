@@ -1,6 +1,7 @@
 /* eslint-disable react/button-has-type */
 import { useState } from "react"
 import { useEffect } from "react"
+import { useRef } from "react"
 
 export default function WorkExperience({ addButton, addWorkExperience,
     index, deleteWorkExperienceForm, handleWorkInput, type, }) {
@@ -10,9 +11,12 @@ export default function WorkExperience({ addButton, addWorkExperience,
     const [userEndDate, setUserEndDate] = useState('')
     const [userDescription, setUserDescription] = useState('')
 
-    useEffect(() =>
-        handleWorkInput(index, userCompany, "company"),
-        [userCompany])
+    const ref = useRef(false);
+    useEffect(() => {
+
+        handleWorkInput(index, userCompany, "company")
+
+    }, [userCompany])
 
     useEffect(() => {
         handleWorkInput(index, userPosition, "position")
@@ -29,6 +33,10 @@ export default function WorkExperience({ addButton, addWorkExperience,
     useEffect(() => {
         handleWorkInput(index, userDescription, "description")
     }, [userDescription])
+
+    useEffect(() => {
+        ref.current = true
+    }, [])
     return (
         <div className="input-container">
             <input type="text" placeholder="Company" onChange={(e) => setUserCompany(e.target.value)} />

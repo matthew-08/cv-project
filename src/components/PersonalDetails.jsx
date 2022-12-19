@@ -17,9 +17,23 @@ export function PersonalDetails(props) {
     const [email, setEmail] = useState('')
     const [location, setLocation] = useState('')
     const [description, setDescription] = useState('')
-    const [workExperience, setWorkExperience] = useState([])
+    const [workExperience, setWorkExperience] = useState([
+        {
+            id: uuid(),
+            company: "Hello",
+            position: "",
+            startDate: "",
+            endDate: "",
+            description: "aggergergergergaegaedgaedgaedg",
+
+        }
+    ])
     const [educationExperience, setEducationExperience] = useState([])
 
+
+    useEffect(() => {
+        console.group(workExperience)
+    }, [workExperience])
     // Get component input states.
 
     const addExperienceComponent = (type) => {
@@ -73,9 +87,6 @@ export function PersonalDetails(props) {
         setWorkExperience(workExperience.filter((form) => form.id !== index))
         : setEducationExperience(educationExperience.filter((form) => form.id !== index))
 
-    useEffect(() => {
-        console.log(educationExperience)
-    }, [educationExperience])
 
     return (
         <div className="main-container">
@@ -132,7 +143,7 @@ export function PersonalDetails(props) {
                     <Description description={description} />
                     {workExperience.length !== 0 && workExperience.map((i, index) =>
                         <div className="work-exp-container">
-                            <h2>Work Experience</h2>
+                            {index === 0 && <h2>Work Experience</h2>}
                             <WorkExpOut
                                 index={i.id}
                                 key={i.id}
@@ -145,7 +156,7 @@ export function PersonalDetails(props) {
                         </div>)}
                     {educationExperience.length !== 0 && educationExperience.map((i, index) =>
                         <div className="education-exp-container">
-                            <h2>Education Experience</h2>
+                            {index === 0 && <h2>Education Experience</h2>}
                             <EduOut
                                 index={i.id}
                                 key={i.id}

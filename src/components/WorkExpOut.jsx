@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/prefer-default-export
 export function WorkExpOut({ company, position, startDate, endDate, description }) {
+    console.log(company)
     return (
         <div className="work-exp-container">
             <div className="work-experience-top">
